@@ -20,23 +20,13 @@ public class BarbershopSystem {
 
         try {
             Thread.sleep(WORKING_TIME);
-        }
-        catch (InterruptedException e) {
+        } catch (InterruptedException e) {
             System.out.println("Главный поток прерван");
         }
 
         System.out.println("Парикмахерская закрывается");
-        synchronized (barbershop) {
-            barbershop.close();
-            try {
-                barberThread.join();
-                gateThread.join();
-            }
-            catch (InterruptedException e) {
-                System.out.println("Не дождались всех потоков");
-            }
-        }
 
-
+        barbershop.close();
+        System.exit(0);
     }
 }
