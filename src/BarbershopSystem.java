@@ -13,9 +13,11 @@ public class BarbershopSystem {
         CustomersGate gate = new CustomersGate(barbershop, CUSTOMERS_FREQUENCY);
 
         Thread barberThread = new Thread(barber);
+        barberThread.setDaemon(true);
         barberThread.start();
 
         Thread gateThread = new Thread(gate);
+        gateThread.setDaemon(true);
         gateThread.start();
 
         try {
@@ -27,6 +29,5 @@ public class BarbershopSystem {
         System.out.println("Парикмахерская закрывается");
 
         barbershop.close();
-        System.exit(0);
     }
 }
